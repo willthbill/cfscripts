@@ -32,4 +32,3 @@ print("New rating:", relevants[rank-1]["newRating"])
 print("Compared to rating within the range: [{},{}]".format(goal_rating - rankrange, goal_rating + rankrange))
 print("Rank: ", rank, " / ", len(relevants))
 print()
-
