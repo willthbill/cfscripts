@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+import os
+import pathlib
+
+path = pathlib.Path(__file__).parent.resolve()
+os.chdir(path)
+
+scripts = [
+    ("dailyproblems", "./CodeforcesDailyProblems/run.sh"),
+    ("customrank", "./CodeforcesCustomRank/run.sh"),
+    ("virtualperformance", "./CodeforcesVirtualPerformance/run.sh"),
+]
+
+print("Choose a script")
+for i in range(len(scripts)):
+    print("{}: {}".format(i + 1, scripts[i][0]))
+
+choice = int(input())
+assert(1 <= choice <= len(scripts))
+
+choice -= 1
+
+os.system(scripts[choice][1])

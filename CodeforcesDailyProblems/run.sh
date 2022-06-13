@@ -1,1 +1,1 @@
-python3 src/main.py
+pipenv run dailyproblems

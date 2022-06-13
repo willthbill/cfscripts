@@ -1,2 +1,2 @@
-pipenv run python src/main.py
+pipenv run customrank
 
