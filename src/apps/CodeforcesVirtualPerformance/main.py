@@ -6,13 +6,21 @@ from rich.text import Text
 from rich.prompt import Prompt, IntPrompt, Confirm
 from datetime import datetime
 import sys
+import os
 
-from lib import CFColors, UserPerformanceCalculator, get_contest_map, get_participated_contest_ids
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../..")
+
+from lib.performance import UserPerformanceCalculator
+from lib.colors import CFColors
+from lib.contests import get_contest_map, get_participated_contest_ids
+from lib import printer
 
 def set_status(status):
     if GROUP is None: return
     GROUP._renderables = [status, TABLE]
     GROUP._render = None
+
+printer.PRINT=set_status
 
 def get_table():
     table=Table(
@@ -83,7 +91,7 @@ def main():
     TABLE=get_table()
     GROUP = Group("loading...",TABLE)
 
-    calculator = UserPerformanceCalculator(HANDLE, print=set_status)
+    calculator = UserPerformanceCalculator(HANDLE)
 
     with Live(GROUP, refresh_per_second=10, screen=False, transient=False, vertical_overflow="visible"):
         for contest_id, time in contest_ids:

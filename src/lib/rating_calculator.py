@@ -1,3 +1,5 @@
+# from: https://github.com/cheran-senthil/TLE/blob/master/tle/util/ranklist/rating_calculator.py
+
 """
 Adapted from Codeforces code to recalculate ratings
 by Mike Mirzayanov (mirzayanovmr@gmail.com) at https://codeforces.com/contest/1/submission/13861109

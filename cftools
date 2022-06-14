@@ -7,9 +7,9 @@ path = pathlib.Path(__file__).parent.resolve()
 os.chdir(path)
 
 scripts = [
-    ("dailyproblems", "./CodeforcesDailyProblems/run.sh"),
-    ("customrank", "./CodeforcesCustomRank/run.sh"),
-    ("virtualperformance", "./CodeforcesVirtualPerformance/run.sh"),
+    ("dailyproblems", "pipenv run dailyproblems"),
+    ("customrank", "pipenv run customrank"),
+    ("virtualperformance", "pipenv run virtualperformance"),
 ]
 
 print("Choose a script")
