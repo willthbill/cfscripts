@@ -10,6 +10,7 @@ scripts = [
     ("dailyproblems", "pipenv run dailyproblems"),
     ("customrank", "pipenv run customrank"),
     ("virtualperformance", "pipenv run virtualperformance"),
+    ("whatif", "pipenv run whatif"),
 ]
 
 print("Choose a script")

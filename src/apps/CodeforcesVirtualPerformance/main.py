@@ -29,11 +29,11 @@ def get_table():
         show_lines=True,
         highlight=True,
     )
+    table.add_column("handle")
     table.add_column("contest name")
     table.add_column("contest id")
     table.add_column("participation type")
     table.add_column("participation time")
-    table.add_column("handle")
     table.add_column("points | penalty")
     table.add_column("old rating")
     table.add_column("rank")
@@ -48,11 +48,11 @@ def add_row(data):
     participation_type_color = "#11ff00" if data["participation_type"] == "contestant" else ("#e5ff00" if data["participation_type"] == "virtual" else "#9dff00")
     timestamp = datetime.utcfromtimestamp(data["time"]).strftime('%Y-%m-%d %H:%M:%S')
     TABLE.add_row(
+        Text(data["handle"], style=rating_color),
         data["contest_name"],
         str(data['contest_id']),# "https://codeforces.com/contest/{}".format(data["contest_id"]),
         Text(data["participation_type"], style=participation_type_color),
         Text(timestamp),
-        Text(data["handle"], style=rating_color),
         "{} | {}".format(data["points"],data["penalty"]),
         Text(str(data["rating"]), style=rating_color),
         str(data["rank"]),
@@ -96,7 +96,7 @@ def main():
     with Live(GROUP, refresh_per_second=10, screen=False, transient=False, vertical_overflow="visible"):
         for contest_id, time in contest_ids:
             set_status("Calculating performance for {} -- {} ...".format(CONTEST_MP[contest_id]["name"], contest_id))
-            data = calculator.get_performance_cached(contest_id)
+            data = calculator.get_performance(contest_id)
             data["time"] = time
             add_row(data)
         set_status("finished")

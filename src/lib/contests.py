@@ -3,7 +3,7 @@ from .submissions import get_submissions
 
 def get_contests():
     url="https://codeforces.com/api/contest.list?gym=false"
-    return get_results(url)
+    return get_results(url, 1)
 
 def get_contest_map():
     contests = get_contests()
@@ -14,7 +14,7 @@ def get_contest_map():
 
 def get_standings( contest_id):
     url = "https://codeforces.com/api/contest.standings?contestId={}&from=1&count=1000000&showUnofficial=true".format(contest_id)
-    results = get_results(url)
+    results = get_results(url, 1)
     return results["contest"], results["problems"], results["rows"]
 
 def get_participated_contest_ids(handle, contest_map=None):

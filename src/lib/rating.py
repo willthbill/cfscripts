@@ -20,12 +20,12 @@ class RatingTracker:
 
 def get_rating_changes_for_contest(contest_id):
     url = "https://codeforces.com/api/contest.ratingChanges?contestId={}".format(contest_id)
-    return get_results(url)
+    return get_results(url, 2)
 
 def get_rating_changes_for_user(handle):
     url = "https://codeforces.com/api/user.rating?handle={}".format(handle)
-    return get_results(url)
+    return get_results(url, 1)
 
 def get_ratedlist():
     url = "https://codeforces.com/api/user.ratedList?activeOnly=true&includeRetired=false"
-    return get_results(url)
+    return get_results(url, 1)

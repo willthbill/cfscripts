@@ -12,7 +12,7 @@ class UserPerformanceCalculator:
         self.handle = handle
         self.rating_tracker = RatingTracker(self.handle)
 
-    def get_performance(self, contest_id):
+    def get_performance(self, contest_id, current_rating=None):
         contest, problems, standings = get_standings(contest_id)
         contestants = {}
         participation_type = None
@@ -37,6 +37,8 @@ class UserPerformanceCalculator:
                     participation_type = type
                     rank = stand["rank"]
 
+        if current_rating is not None: contestants[self.handle][3] = current_rating
+
         rating_changes = None
         try:
             rating_changes = get_rating_changes_for_contest(contest_id) # this fails for old/unusual contests
@@ -46,10 +48,10 @@ class UserPerformanceCalculator:
                 "contest_id" : contest_id,
                 "contest_name" : contest["name"],
                 "handle" : self.handle,
-                "points" : contestants[self.handle][1],
-                "penalty" : contestants[self.handle][2],
-                "rating" : contestants[self.handle][3],
-                "rank" : rank,
+                "points" : int(contestants[self.handle][1]),
+                "penalty" : int(contestants[self.handle][2]),
+                "rating" : int(contestants[self.handle][3]),
+                "rank" : int(rank),
                 "delta" : "unknown",
                 "performance" : "unknown",
                 "participation_type" : participation_type.lower(),
@@ -87,6 +89,8 @@ class UserPerformanceCalculator:
                 new_contestants[handle] = contestants[handle]
             contestants = new_contestants
 
+        if current_rating is not None: contestants[self.handle][3] = current_rating
+
         assert(self.handle in contestants)
         for handle in contestants:
             assert(contestants[handle][0] == handle)
@@ -106,7 +110,7 @@ class UserPerformanceCalculator:
                     "points" : con.points,
                     "penalty" : con.penalty,
                     "rating" : con.rating,
-                    "rank" : rank,
+                    "rank" : int(rank),
                     "delta" : con.delta,
                     "performance" : con.rating + con.delta * 4,
                     "participation_type" : participation_type.lower(),
@@ -114,25 +118,25 @@ class UserPerformanceCalculator:
                 }
         assert(False);
 
-    def get_performance_cached(self, contest_id):
-        cache_dir=os.path.expanduser("~/.cache/cftools/virtual_rating")
-        os.makedirs(cache_dir, exist_ok=True)
-        cache_file="{}/cache.json".format(cache_dir)
-        res = None
-        data = None
-        if os.path.exists(cache_file):
-            with open(cache_file, "r") as file:
-                data = json.load(file)
-                if self.handle in data and str(contest_id) in data[self.handle]:
-                    res = data[self.handle][str(contest_id)]
-        if res is None:
-            res = self.get_performance(contest_id)
-        if data is None:
-            data = {}
-        if self.handle not in data:
-            data[self.handle] = {}
-        data[self.handle][str(contest_id)] = res
-        if res["result_status"] != "just_ended":
-            with open(cache_file, "w") as file:
-                json.dump(data, file)
-        return res
+    # def get_performance_cached(self, contest_id, current_rating=None):
+    #     cache_dir=os.path.expanduser("~/.cache/cftools/virtual_rating")
+    #     os.makedirs(cache_dir, exist_ok=True)
+    #     cache_file="{}/cache.json".format(cache_dir)
+    #     res = None
+    #     data = None
+    #     if os.path.exists(cache_file):
+    #         with open(cache_file, "r") as file:
+    #             data = json.load(file)
+    #             if self.handle in data and str(contest_id) in data[self.handle]:
+    #                 res = data[self.handle][str(contest_id)]
+    #     if res is None:
+    #         res = self.get_performance(contest_id, current_rating)
+    #     if data is None:
+    #         data = {}
+    #     if self.handle not in data:
+    #         data[self.handle] = {}
+    #     data[self.handle][str(contest_id)] = res
+    #     if res["result_status"] != "just_ended":
+    #         with open(cache_file, "w") as file:
+    #             json.dump(data, file)
+    #     return res
