@@ -3,7 +3,7 @@ from rich.table import Table
 from rich.console import Group
 from rich.live import Live
 from rich.text import Text
-from rich.prompt import IntPrompt, Prompt
+from rich.prompt import IntPrompt, Prompt, Confirm
 from rich import print
 from datetime import datetime
 import sys
@@ -79,6 +79,10 @@ def main():
         choices=list(map(str, range(1,len(contest_ids) + 1))),
         show_choices=False
     )
+    only_positive = Confirm.ask(
+        "Only include positive rating changes",
+        default=False,
+    )
     contest_ids = (contest_ids[-amount::])
     calculator = UserPerformanceCalculator(handle)
     tracker = RatingTracker(handle)
@@ -96,7 +100,8 @@ def main():
             data = calculator.get_performance(contest_id, old_rating)
             new_rating = old_rating
             if type(data["delta"]) != str:
-                new_rating = old_rating + data["delta"]
+                if (not only_positive) or data["delta"] > 0:
+                    new_rating = old_rating + data["delta"]
             data["old_rating"] = old_rating
             data["new_rating"] = new_rating
             data["time"] = time
