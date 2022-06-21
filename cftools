@@ -7,10 +7,11 @@ path = pathlib.Path(__file__).parent.resolve()
 os.chdir(path)
 
 scripts = [
-    ("dailyproblems", "pipenv run dailyproblems"),
-    ("customrank", "pipenv run customrank"),
-    ("virtualperformance", "pipenv run virtualperformance"),
-    ("whatif", "pipenv run whatif"),
+    ("daily problems", "pipenv run dailyproblems"),
+    ("custom rank", "pipenv run customrank"),
+    ("virtual performance", "pipenv run virtualperformance"),
+    ("find unsolved contest problems", "pipenv run findunsolvedcontestproblems"),
+    ("what if", "pipenv run whatif"),
 ]
 
 print("Choose a script")

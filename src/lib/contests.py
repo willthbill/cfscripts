@@ -1,3 +1,5 @@
+import re
+
 from .api import get_results
 from .submissions import get_submissions
 
@@ -32,3 +34,9 @@ def get_participated_contest_ids(handle, contest_map=None):
     l = [(id, contest_ids[id]) for id in contest_ids]
     l.sort(key=lambda t: t[1])
     return l
+
+def get_contest_number(contest_name):
+    res = re.findall(r'#(\d+)', contest_name)
+    if len(res) == 0: return None
+    if len(res) != 1: return None
+    return int(res[0])
