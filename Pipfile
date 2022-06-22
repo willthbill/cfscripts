@@ -15,8 +15,9 @@ requests-cache = "*"
 python_version = "3.10"
 
 [scripts]
-dailyproblems = "python ./src/apps/CodeforcesDailyProblems/main.py"
-customrank = "python ./src/apps/CodeforcesCustomRank/main.py"
-virtualperformance = "python ./src/apps/CodeforcesVirtualPerformance/main.py"
-findunsolvedcontestproblems = "python ./src/apps/FindUnsolvedContestProblems/main.py"
+dailyacs = "python ./src/apps/DailyACs/main.py"
+comuaccount = "python ./src/apps/ComuACCount/main.py"
+rangerank = "python ./src/apps/RangeRank/main.py"
+virtualperformance = "python ./src/apps/VirtualPerformance/main.py"
+unsolvedcontestproblems = "python ./src/apps/UnsolvedContestProblems/main.py"
 whatif = "python ./src/apps/WhatIf/main.py"

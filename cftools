@@ -16,40 +16,48 @@ me="by William Bille Meyling (cf: WillTheBill, github: willthbill)"
 # credit
 scripts = [
         (
-            "Daily Problems",
-            "pipenv run dailyproblems",
+            "Daily AC's",
+            "pipenv run dailyacs",
             """
             Finds problems solved on each day along with their rating.
             """,
             me,
-            ),
+        ),
         (
-            "Range rank",
-            "pipenv run customrank",
+            "Comulative AC count",
+            "pipenv run comuaccount",
             """
-            In an official contest, where did you rank among the contestants within a given rating range around your rating at the time of participating.
+            Count how many problems solved since a spefific date.
             """,
             me,
-            ),
+        ),
+        (
+            "Range rank",
+            "pipenv run rangerank",
+            """
+            In an official contest, where did you rank among the contestants within a given rating range around your rating (the rating at the time of participating).
+            """,
+            me,
+        ),
         (
             "Virtual Performance",
             "pipenv run virtualperformance",
-            "Calculate performance/rank/score of virtual/unofficial/offical contests.",
+            "Calculate rank/delta/performance of virtual/unofficial/offical contests.",
             me
-            ),
+        ),
         (
             "Unsolved Contest Problems",
-            "pipenv run findunsolvedcontestproblems",
+            "pipenv run unsolvedcontestproblems",
             """
-            Find unsolved problems from contests with at least one submission.    Why? Because you don't want to spoil nice available virtuals. Handles div1/div2 contests where a problem occurs in both.
+            Find unsolved problems from contests with at least one submission. Why? Because you don't want to spoil nice unsolved virtuals. Handles div1/div2 contests where a problem occurs in both.
             """,
             me
-            ),
+        ),
         (
             "What if?",
             "pipenv run whatif",
             """
-What If Codeforces virtual contests / unofficial participations were official?
+What If Codeforces virtual contests / unofficial participations were official? Calculates new ratings using deltas and simulates the past n contests.
             """,
             me
         ),
