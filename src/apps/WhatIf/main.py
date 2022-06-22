@@ -70,8 +70,7 @@ def main():
 
     GROUP = None
 
-    print("What If Codeforces virtual contests / unofficial participations were official?")
-    handle = Prompt.ask("Codeforces handle")
+    handle = Prompt.ask("CodeForces handle")
     contest_ids = get_participated_contest_ids(handle)
     amount = IntPrompt.ask(
         "Amount of contests to go back (at most {})".format(len(contest_ids)),
@@ -115,4 +114,5 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         print()
+        sys.exit(1)
     sys.exit(0)

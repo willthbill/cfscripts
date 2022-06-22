@@ -64,7 +64,7 @@ def main():
     global GROUP, HANDLE, CONTEST_MP, TABLE
 
     GROUP = None
-    HANDLE = Prompt.ask("Codeforces handle")
+    HANDLE = Prompt.ask("CodeForces handle")
     CONTEST_MP = get_contest_map()
     contest_ids = get_participated_contest_ids(HANDLE)
 
@@ -106,4 +106,5 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         print()
+        sys.exit(1)
     sys.exit(0)

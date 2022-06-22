@@ -108,11 +108,6 @@ def filter_by_rating(problems, rmin, rmax):
     return filter(filter_problem, problems)
 
 def main():
-    print("Find unsolved problems from contests already submitted at least once")
-    print("Why? Because you don't want to spoil nice available virtuals")
-    print("Handles div1/div2 contests where a problem occurs in both")
-    print()
-
     handle = Prompt.ask("CodeForces handle")
 
     should_filter_by_rating = Confirm.ask(
@@ -145,9 +140,11 @@ def main():
     console = Console()
     console.print(table)
 
+
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
         print()
+        sys.exit(1)
     sys.exit(0)
