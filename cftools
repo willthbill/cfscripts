@@ -16,7 +16,7 @@ me="by William Bille Meyling (cf: WillTheBill, github: willthbill)"
 # credit
 scripts = [
         (
-            "Daily AC's",
+            "Daily ACs",
             "pipenv run dailyacs",
             """
             Finds problems solved on each day along with their rating.
