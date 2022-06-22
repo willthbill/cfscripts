@@ -1,3 +1,4 @@
+from urllib.parse import quote_plus
 import re
 
 from .api import get_results
@@ -14,10 +15,26 @@ def get_contest_map():
         mp[contest["id"]] = contest
     return mp
 
-def get_standings( contest_id):
-    url = "https://codeforces.com/api/contest.standings?contestId={}&from=1&count=1000000&showUnofficial=true".format(contest_id)
+def get_contest(contest_id):
+    url = "https://codeforces.com/api/contest.standings?contestId={}&from=1&count=1000000&showUnofficial=true".format(
+        quote_plus(str(contest_id))
+    )
     results = get_results(url, 1)
-    return results["contest"], results["problems"], results["rows"]
+    return results["contest"]
+
+def get_standings(contest_id):
+    url = "https://codeforces.com/api/contest.standings?contestId={}&from=1&count=1000000&showUnofficial=true".format(
+        quote_plus(str(contest_id))
+    )
+    results = get_results(url, 1)
+    return results["rows"]
+
+def get_contest_problems(contest_id):
+    url = "https://codeforces.com/api/contest.standings?contestId={}&from=1&count=1000000&showUnofficial=true".format(
+        quote_plus(str(contest_id))
+    )
+    results = get_results(url, 1)
+    return results["problems"]
 
 def get_participated_contest_ids(handle, contest_map=None):
     if contest_map is None:

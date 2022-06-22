@@ -1,11 +1,11 @@
-from .api import get_results
-
 from urllib.parse import quote_plus
 
-# TODO: use urllib everywhere
+from .api import get_results
 
 def get_submissions(handle):
-    url = "https://codeforces.com/api/user.status?handle={}&from=1&count=1000000".format(handle)
+    url = "https://codeforces.com/api/user.status?handle={}&from=1&count=1000000".format(
+        quote_plus(str(handle))
+    )
     return get_results(url, 1)
 
 def get_submissions_for_contest(contest_id, handle=None):

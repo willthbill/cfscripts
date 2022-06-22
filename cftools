@@ -19,7 +19,7 @@ scripts = [
             "Daily Problems",
             "pipenv run dailyproblems",
             """
-            First finds problems solved on each day along with their rating.
+            Finds problems solved on each day along with their rating.
             """,
             me,
             ),

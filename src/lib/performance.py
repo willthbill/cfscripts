@@ -1,9 +1,6 @@
-import json
-import os
-
 from .rating import RatingTracker, get_rating_changes_for_contest, get_ratedlist
 from .api import NoRatingChangesError
-from .contests import get_standings
+from .contests import get_standings, get_contest
 from .rating_calculator import CodeforcesRatingCalculator
 
 class UserPerformanceCalculator:
@@ -13,7 +10,8 @@ class UserPerformanceCalculator:
         self.rating_tracker = RatingTracker(self.handle)
 
     def get_performance(self, contest_id, current_rating=None):
-        contest, problems, standings = get_standings(contest_id)
+        contest = get_contest(contest_id)
+        standings = get_standings(contest_id)
         contestants = {}
         participation_type = None
         rank = None
@@ -117,26 +115,3 @@ class UserPerformanceCalculator:
                     "result_status" : result_status,
                 }
         assert(False);
-
-    # def get_performance_cached(self, contest_id, current_rating=None):
-    #     cache_dir=os.path.expanduser("~/.cache/cftools/virtual_rating")
-    #     os.makedirs(cache_dir, exist_ok=True)
-    #     cache_file="{}/cache.json".format(cache_dir)
-    #     res = None
-    #     data = None
-    #     if os.path.exists(cache_file):
-    #         with open(cache_file, "r") as file:
-    #             data = json.load(file)
-    #             if self.handle in data and str(contest_id) in data[self.handle]:
-    #                 res = data[self.handle][str(contest_id)]
-    #     if res is None:
-    #         res = self.get_performance(contest_id, current_rating)
-    #     if data is None:
-    #         data = {}
-    #     if self.handle not in data:
-    #         data[self.handle] = {}
-    #     data[self.handle][str(contest_id)] = res
-    #     if res["result_status"] != "just_ended":
-    #         with open(cache_file, "w") as file:
-    #             json.dump(data, file)
-    #     return res

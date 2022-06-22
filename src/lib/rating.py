@@ -1,3 +1,5 @@
+from urllib.parse import quote_plus
+
 from .api import get_results
 
 class RatingTracker:
@@ -19,11 +21,15 @@ class RatingTracker:
         return self.ratings[-1][1]
 
 def get_rating_changes_for_contest(contest_id):
-    url = "https://codeforces.com/api/contest.ratingChanges?contestId={}".format(contest_id)
+    url = "https://codeforces.com/api/contest.ratingChanges?contestId={}".format(
+        quote_plus(str(contest_id))
+    )
     return get_results(url, 2)
 
 def get_rating_changes_for_user(handle):
-    url = "https://codeforces.com/api/user.rating?handle={}".format(handle)
+    url = "https://codeforces.com/api/user.rating?handle={}".format(
+        quote_plus(str(handle)),
+    )
     return get_results(url, 1)
 
 def get_ratedlist():
