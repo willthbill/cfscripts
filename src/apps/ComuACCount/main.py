@@ -1,13 +1,13 @@
-import requests as req
-import json
-import datetime
-import sys
+from requests import get as req_get
+from json import loads
+from datetime import datetime
+from sys import exit
 
 def main():
     handle = input("CodeForces handle: ")
     url = "https://codeforces.com/api/user.status?handle={}".format(handle)
-    response = req.get(url)
-    subs = json.loads(response.content)["result"][::-1]
+    response = req_get.get(url)
+    subs = loads(response.content)["result"][::-1]
     problems = {} 
     for sub in subs:
         problem = str(sub["problem"]["contestId"]) + sub["problem"]["index"]
@@ -17,7 +17,7 @@ def main():
     days = {}
     for problemID in problems:
         problem = problems[problemID]
-        date = datetime.datetime.fromtimestamp(problem["time"])
+        date = datetime.fromtimestamp(problem["time"])
         newtime = problem["time"] - date.hour * 60 * 60 - date.minute * 60 - date.second
         if newtime not in days: days[newtime] = []
         days[newtime].append(problem)
@@ -25,7 +25,7 @@ def main():
     daynames = []
     for day in days:
         probs = days[day]
-        date = datetime.datetime.fromtimestamp(day)
+        date = datetime.fromtimestamp(day)
         comu.append(len(probs))
         daynames.append(date)
     for i in range(len(comu)-2,-1,-1):
@@ -39,5 +39,5 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         print()
-        sys.exit(1)
-    sys.exit(0)
+        exit(1)
+    exit(0)

@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
-import os
-import pathlib
-import textwrap
-import sys
+from os import system, chdir
+from pathlib import Path
+from textwrap import wrap, dedent
+from sys import exit
 
-path = pathlib.Path(__file__).parent.resolve()
-os.chdir(path)
+path = Path(__file__).parent.resolve()
+chdir(path)
+
+system("tree -a ./dailyacs")
 
 me="by William Bille Meyling (cf: WillTheBill, github: willthbill)"
 
@@ -17,7 +19,7 @@ me="by William Bille Meyling (cf: WillTheBill, github: willthbill)"
 scripts = [
         (
             "Daily ACs",
-            "python src/apps/DailyACs/main.py",
+            "./dailyacs",
             """
             Finds problems solved on each day along with their rating.
             """,
@@ -72,31 +74,28 @@ def main():
     print("Choose a script")
     for i in range(len(scripts)):
         print("{}: {}".format(i + 1, scripts[i][0]))
-    try:
-        choice = int(input("Script number (1-{}): ".format(len(scripts))))
-    except:
-        exit(1)
+    choice = int(input("Script number (1-{}): ".format(len(scripts))))
     assert(1 <= choice <= len(scripts))
     choice -= 1
 
     def print_script_info(script):
         firstline="============={}=============".format(script[0])
         print(firstline)
-        print(*textwrap.wrap(textwrap.dedent(script[2]).strip(), 80), sep="\n")
+        print(*wrap(dedent(script[2]).strip(), 80), sep="\n")
         print("--------------")
-        print(*textwrap.wrap(textwrap.dedent(script[3]).strip(), 80), sep="\n")
+        print(*wrap(dedent(script[3]).strip(), 80), sep="\n")
         print("=" * len(firstline))
 
     print()
     print_script_info(scripts[choice])
     print()
 
-    os.system(scripts[choice][1])
+    system(scripts[choice][1])
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
         print()
-        sys.exit(1)
-    sys.exit(0)
+        exit(1)
+    exit(0)
