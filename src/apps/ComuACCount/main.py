@@ -6,7 +6,7 @@ from sys import exit
 def main():
     handle = input("CodeForces handle: ")
     url = "https://codeforces.com/api/user.status?handle={}".format(handle)
-    response = req_get.get(url)
+    response = req_get(url)
     subs = loads(response.content)["result"][::-1]
     problems = {} 
     for sub in subs:

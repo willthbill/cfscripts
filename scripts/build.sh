@@ -15,6 +15,7 @@ function python_build {
     pyinstall -n $1 src/apps/$2
 }
 
+# scripts
 python_build dailyacs DailyACs/main.py
 python_build comuaccount ComuACCount/main.py
 python_build rangerank RangeRank/main.py
@@ -22,14 +23,8 @@ python_build virtualperformance VirtualPerformance/main.py
 python_build unsolvedcontestproblems UnsolvedContestProblems/main.py
 python_build whatif WhatIf/main.py
 
-pyinstall \
-    --add-binary $DIST/dailyacs:. \
-    --add-binary $DIST/comuaccount:. \
-    --add-binary $DIST/rangerank:. \
-    --add-binary $DIST/virtualperformance:. \
-    --add-binary $DIST/unsolvedcontestproblems:. \
-    --add-binary $DIST/whatif:. \
-    -n cftools ./src/main.py
+# cftools
+pyinstall -n cftools ./src/main.py
 
 mkdir -p $BIN
 
