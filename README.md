@@ -1,6 +1,8 @@
 # CfScripts - a collection of scripts for CodeForces
 `cfscripts` is a collection of scripts for [CodeForces](https://codeforces.com) that uses the [CodeForces API](https://codeforces.com/apiHelp).
 
+![Preview](cfscripts_final.gif)
+
 ## ✨ Scripts
 `cfscripts` currently include the following scripts:
 
