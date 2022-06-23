@@ -12,7 +12,7 @@ function pyinstall {
 }
 
 function python_build {
-    pyinstall -n $1 src/apps/$2
+    pyinstall -n $1 src/scripts/$2
 }
 
 # scripts

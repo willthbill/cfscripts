@@ -2,12 +2,12 @@ from os import system
 from textwrap import wrap, dedent
 from sys import exit
 
-from apps.ComuACCount.main import main as main_comuaccount
-from apps.DailyACs.main import main as main_dailyacs
-from apps.RangeRank.main import main as main_rangerank
-from apps.UnsolvedContestProblems.main import main as main_unsolvedcontestproblems
-from apps.VirtualPerformance.main import main as main_virtualperformance
-from apps.WhatIf.main import main as main_whatif
+from scripts.ComuACCount.main import main as main_comuaccount
+from scripts.DailyACs.main import main as main_dailyacs
+from scripts.RangeRank.main import main as main_rangerank
+from scripts.UnsolvedContestProblems.main import main as main_unsolvedcontestproblems
+from scripts.VirtualPerformance.main import main as main_virtualperformance
+from scripts.WhatIf.main import main as main_whatif
 
 me="by William Bille Meyling (cf: WillTheBill, github: willthbill)"
 
