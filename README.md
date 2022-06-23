@@ -4,7 +4,7 @@
 ![Preview](cfscripts_final.gif)
 
 ## ✨ Scripts
-`cfscripts` currently include the following scripts:
+`cfscripts` currently includes the following scripts:
 
 * **Comulative AC count**
     - Count how many problems were solved since a specific date.
@@ -48,7 +48,7 @@ The following sections explain the various parts of the project from a developme
 * `python3`
 * `bash`
 
-### Directory Structure**
+### Directory Structure
 * `src` should contain all source code, including scripts.
     - `src/lib` contains library code for interacting with the CodeForces API.
     - `src/scripts` contains a directory for each script.
@@ -56,12 +56,12 @@ The following sections explain the various parts of the project from a developme
 
 ### Pipenv Development Environment
 
-`cfscripts is written in `python` and uses `pipenv`.
+`cfscripts` is written in `python` and uses `pipenv`.
 Install `python` dependencies using:
 ```bash
 $ pipenv install
 ```
-Run `cfscripts without building using:
+Run `cfscripts` without building using:
 ```bash
 $ pipenv run cfscripts
 ```
@@ -73,7 +73,7 @@ To add a pip-package to the environment use:
 ```
 pipenv install <package-name>
 ```
-You may also activate the `pipenv` environment using
+You may also activate the `pipenv` environment using:
 ```
 pipenv shell
 ```
