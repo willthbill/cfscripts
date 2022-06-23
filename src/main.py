@@ -2,23 +2,40 @@ from os import system
 from textwrap import wrap, dedent
 from sys import exit
 
-from scripts.ComuACCount.main import main as main_comuaccount
-from scripts.DailyACs.main import main as main_dailyacs
-from scripts.RangeRank.main import main as main_rangerank
-from scripts.UnsolvedContestProblems.main import main as main_unsolvedcontestproblems
-from scripts.VirtualPerformance.main import main as main_virtualperformance
-from scripts.WhatIf.main import main as main_whatif
-
 me="by William Bille Meyling (cf: WillTheBill, github: willthbill)"
+
+def comuaccount():
+    import scripts.ComuACCount.main
+    scripts.ComuACCount.main.main()
+
+def dailyacs():
+    import scripts.DailyACs.main
+    scripts.DailyACs.main.main()
+
+def rangerank():
+    import scripts.RangeRank.main
+    scripts.RangeRank.main.main()
+
+def unsolvedcontestproblems():
+    import scripts.UnsolvedContestProblems.main
+    scripts.UnsolvedContestProblems.main.main()
+
+def virtualperformance():
+    import scripts.VirtualPerformance.main
+    scripts.VirtualPerformance.main.main()
+
+def whatif():
+    import scripts.WhatIf.main
+    scripts.WhatIf.main.main()
 
 # name
 # function/command
 # description
 # credit
-scripts = [
+script_configs = [
         (
             "Comulative AC count",
-            main_comuaccount,
+            comuaccount,
             """
             Count how many problems were solved since a specific date.
             """,
@@ -26,7 +43,7 @@ scripts = [
         ),
         (
             "Daily ACs",
-            main_dailyacs,
+            dailyacs,
             """
             Finds problems solved on each day along with their rating.
             """,
@@ -34,7 +51,7 @@ scripts = [
         ),
         (
             "Range rank",
-            main_rangerank,
+            rangerank,
             """
             In an official contest, where did you rank among the contestants within a given rating range around your rating (the rating at the time of participating).
             """,
@@ -42,7 +59,7 @@ scripts = [
         ),
         (
             "Unsolved Contest Problems",
-            main_unsolvedcontestproblems,
+            unsolvedcontestproblems,
             """
             Find unsolved problems from contests with at least one submission. Why? Because you don't want to spoil nice unsolved virtuals. Handles div1/div2 contests where a problem occurs in both.
             """,
@@ -50,13 +67,13 @@ scripts = [
         ),
         (
             "Virtual Performance",
-            main_virtualperformance,
-            "Calculate rank/delta/performance of virtual/unofficial/offical contests.",
+            virtualperformance,
+            "Calculate rank/delta/performance of virtual/unofficial/official contests.",
             me
         ),
         (
             "What if?",
-            main_whatif,
+            whatif,
             """
             What If Codeforces virtual contests / unofficial participations were official? Calculates new ratings using deltas and simulates the past n contests.
             """,
@@ -71,10 +88,10 @@ def main():
     print()
 
     print("Choose a script")
-    for i in range(len(scripts)):
-        print("{}: {}".format(i + 1, scripts[i][0]))
-    choice = int(input("Script number (1-{}): ".format(len(scripts))))
-    assert(1 <= choice <= len(scripts))
+    for i in range(len(script_configs)):
+        print("{}: {}".format(i + 1, script_configs[i][0]))
+    choice = int(input("Script number (1-{}): ".format(len(script_configs))))
+    assert(1 <= choice <= len(script_configs))
     choice -= 1
 
     def print_script_info(script):
@@ -86,10 +103,10 @@ def main():
         print("=" * len(firstline))
 
     print()
-    print_script_info(scripts[choice])
+    print_script_info(script_configs[choice])
     print()
 
-    program = scripts[choice][1]
+    program = script_configs[choice][1]
     if type(program) == str:
         system(program)
     else:
