@@ -37,10 +37,15 @@ On linux you may optionally create an alias for the `cftools` executable, or add
 
 ## pipenv development workflow
 `cftools` is written in `python` and uses `pipenv`.
+
 Install `python` dependencies using `pipenv install`.
+
 Run `cftools` without building using `pipenv run cftools`.
+
 Run a specific script directory without building using `pipenv run <script-name>` (see `Pipfile` for script-names in the `[scripts]` section).
+
 To add a pip-package to the environment use `pipenv install <package-name>`.
+
 You may also activate the `pipenv` environment using `pipenv shell`. Then you can run any python file directly.
 
 ## Building
@@ -50,9 +55,13 @@ Run `pipenv run build`.
 
 ## Creating a script
 Scripts should preferably be written in python, however scripts may be written in any language (see `src/main.py` and `scripts/build.sh`).
+
 When adding a script you should create a directory in `src/apps` with the script name, and the files used by the script should be placed within this directory.
+
 Then you should add a pipenv-script in the Pipfile's `[scripts]` section to run the script using pipenv (this applies to scripts in other languages as well).
+
 In order to run the script through `cftools` you should add an entry in the `scripts` list in `src/main.py`, each entry is a tuple of the form (name, function/command, description, credit).
+
 Lastly, you can add a line in `scripts/build.sh` for building the script into an single executable.
 
 # Contribution
