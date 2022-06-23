@@ -23,9 +23,9 @@ python_build virtualperformance VirtualPerformance/main.py
 python_build unsolvedcontestproblems UnsolvedContestProblems/main.py
 python_build whatif WhatIf/main.py
 
-# cftools
-pyinstall -n cftools ./src/main.py
+# cfscripts
+pyinstall -n cfscripts ./src/main.py
 
 mkdir -p $BIN
 
-cp $DIST/cftools $BIN/cftools
+cp $DIST/cfscripts $BIN/cfscripts

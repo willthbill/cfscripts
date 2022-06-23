@@ -66,7 +66,7 @@ scripts = [
 
 def main():
 
-    print("Welcome to cftools - a collection of scripts using the CodeForces API")
+    print("Welcome to cfscripts - a collection of scripts for CodeForces")
     print("- created and maintained by", me)
     print()
 
