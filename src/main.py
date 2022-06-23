@@ -20,7 +20,7 @@ scripts = [
             "Comulative AC count",
             main_comuaccount,
             """
-            Count how many problems were solved since a spefific date.
+            Count how many problems were solved since a specific date.
             """,
             me,
         ),
