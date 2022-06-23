@@ -58,7 +58,7 @@ scripts = [
             "What if?",
             main_whatif,
             """
-What If Codeforces virtual contests / unofficial participations were official? Calculates new ratings using deltas and simulates the past n contests.
+            What If Codeforces virtual contests / unofficial participations were official? Calculates new ratings using deltas and simulates the past n contests.
             """,
             me
         ),
