@@ -34,7 +34,7 @@ On linux you may optionally create an alias for the `cfscripts` executable, or a
 ## 🚀 Usage
 * Run the executable
 ```
-./cfscripts
+$ ./cfscripts
 ```
 * If you are using the development environment then check out the [pipenv development workflow section](#pipenv-development-environment).
 
@@ -67,15 +67,15 @@ $ pipenv run cfscripts
 ```
 Run a specific script directory without building using (see `Pipfile` for script-names in the `[scripts]` section):
 ```bash
-pipenv run <script-name>
+$ pipenv run <script-name>
 ``` 
 To add a pip-package to the environment use:
 ```
-pipenv install <package-name>
+$ pipenv install <package-name>
 ```
 You may also activate the `pipenv` environment using:
 ```
-pipenv shell
+$ pipenv shell
 ```
 Then you can run any python file directly.
 
