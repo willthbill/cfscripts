@@ -1,4 +1,8 @@
 _build/*
 _specs/*
 _dist/*
+_build_windows/*
+_dist_windows/*
+_specs_windows/*
 bin/*
+requirements.txt
