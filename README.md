@@ -32,9 +32,18 @@
 On linux you may optionally create an alias for the `cfscripts` executable, or add its location to the `PATH` variable.
 
 ## 🚀 Usage
-* Run the executable
+
+* **On linux**: make sure the executable can be executed using:
+```
+$ chmod +x ./cfscripts
+```
+then you can run the executable:
 ```
 $ ./cfscripts
+```
+* **On Windows**: you should just be able to run the executable without modifying its permissions.
+```
+$ ./cfscripts.exe
 ```
 * If you are using the development environment then check out the [pipenv development workflow section](#pipenv-development-environment).
 
