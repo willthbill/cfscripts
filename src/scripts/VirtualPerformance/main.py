@@ -44,8 +44,8 @@ def get_table():
 def add_row(data):
     performance_color = CFColors.get_rating_color(data["performance"])
     rating_color = CFColors.get_rating_color(data["rating"])
-    delta_color = "white" if type(data["delta"]) == str else ("#ff0008" if data["delta"] < 0 else ("#15ff00" if data["delta"] > 0 else "white"))
-    participation_type_color = "#11ff00" if data["participation_type"] == "contestant" else ("#e5ff00" if data["participation_type"] == "virtual" else "#9dff00")
+    delta_color = CFColors.get_delta_color(data["delta"])
+    participation_type_color = CFColors.get_participation_type_color(data["participation_type"])
     timestamp = datetime.utcfromtimestamp(data["time"]).strftime('%Y-%m-%d %H:%M:%S')
     TABLE.add_row(
         Text(data["handle"], style=rating_color),

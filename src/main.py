@@ -61,7 +61,7 @@ script_configs = [
             "Unsolved Contest Problems",
             unsolvedcontestproblems,
             """
-            Find unsolved problems from contests with at least one submission. Why? Because you don't want to spoil nice unsolved virtuals. Handles div1/div2 contests where a problem occurs in both.
+            Find unsolved problems from contests, where you have made at least one submission in the contest. Why? Because you don't want to spoil nice unsolved virtuals, when you just solve problems from the problemset. It handles div1/div2 contests where a problem occurs in both.
             """,
             me
         ),

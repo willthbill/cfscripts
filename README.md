@@ -16,14 +16,14 @@
     - In an official contest, where did you rank among the contestants within a given rating range around your rating (the rating at the time of participating).
 
 * **Unsolved Contest Problems**
-    - Find unsolved problems from contests with at least one submission. Why? Because you don't want to spoil nice unsolved virtuals. Handles div1/div2 contests where a problem occurs in both.
+    - Find unsolved problems from contests, where you have made at least one submission in the contest. Why? Because you don't want to spoil nice unsolved virtuals, when you just solve problems from the problemset. It handles div1/div2 contests where a problem occurs in both.
 
 * **Virtual Performance**
     - Calculate rank/delta/performance of virtual/unofficial/official contests.
 
 * **What if?**
-    - What If CodeForces virtual contests / unofficial participations were official? Calculates new ratings using deltas and simulates the past `n` contests.
- 
+    - What If Codeforces virtual contests / unofficial participations were official? Calculates new ratings using deltas and simulates the past `n` contests.
+
 ## 📦 Installation
 `cfscripts` can be *installed* in two different ways.
 * You can download a pre-compiled binary from the [releases page](https://github.com/willthbill/cfscripts/releases).
