@@ -10,8 +10,10 @@ def main():
     subs = loads(response.content)["result"][::-1]
     problems = {} 
     for sub in subs:
-        problem = str(sub["problem"]["contestId"]) + sub["problem"]["index"]
-        if sub["verdict"] == "OK" and problem not in problems:
+        problem = ""
+        if "contestId" not in sub["problem"]: problem = sub["problem"]["name"]
+        else: problem = sub["problem"]["name"] + " (" + str(sub["problem"]["contestId"]) + sub["problem"]["index"] + ")"
+        if "verdict" in sub and sub["verdict"] == "OK" and problem not in problems:
             problems[problem] = sub["problem"]
             problems[problem]["time"] = int(sub["creationTimeSeconds"])
     days = {}
@@ -20,13 +22,14 @@ def main():
         date = datetime.fromtimestamp(problem["time"])
         newtime = problem["time"] - date.hour * 60 * 60 - date.minute * 60 - date.second
         if newtime not in days: days[newtime] = []
+        problem["name"] = problemID
         days[newtime].append(problem)
     for day in days:
         probs = days[day]
         date = datetime.fromtimestamp(day)
         print(date.strftime('%b/%d/%Y')+":", len(probs))
         for problem in probs:
-            print("    -", str(problem["rating"]if "rating" in problem else "unrated")+": ", str(problem["contestId"])+problem["index"], problem["name"])
+            print("    -", str(problem["rating"]if "rating" in problem else "unrated")+":", problem["name"])
 
 if __name__ == "__main__":
     try:

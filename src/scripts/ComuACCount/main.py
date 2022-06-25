@@ -10,8 +10,10 @@ def main():
     subs = loads(response.content)["result"][::-1]
     problems = {} 
     for sub in subs:
-        problem = str(sub["problem"]["contestId"]) + sub["problem"]["index"]
-        if sub["verdict"] == "OK" and problem not in problems:
+        problem = ""
+        if "contestId" not in sub["problem"]: problem = sub["problem"]["name"]
+        else: problem = sub["problem"]["name"] + "(" + str(sub["problem"]["contestId"]) + sub["problem"]["index"] + ")"
+        if "verdict" in sub and sub["verdict"] == "OK" and problem not in problems:
             problems[problem] = sub["problem"]
             problems[problem]["time"] = int(sub["creationTimeSeconds"])
     days = {}
