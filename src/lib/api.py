@@ -31,6 +31,7 @@ class NoRatingChangesError(Exception):
 def get_results(url, cache_type=0):
     while True:
         printer.PRINT("fetching ... {}".format(url))
+
         res = None
         if cache_type == 0:
             with requests_cache.disabled():
@@ -39,14 +40,23 @@ def get_results(url, cache_type=0):
             res = _short_session.get(url)
         else:
             res = _long_session.get(url)
-        content = json.loads(res.content)
+
+        try:
+            content = json.loads(res.content)
+        except json.decoder.JSONDecodeError:
+            sleep(0.5)
+            printer.PRINT("retrying")
+            sleep(0.5)
+            continue
+
         printer.PRINT("fetching {} {}".format(content["status"], url))
+
         if printer.PRINT is not None: sleep(0.2)
         if content["status"] == "OK":
             return content["result"]
         elif content["comment"] == "contestId: Rating changes are unavailable for this contest":
             raise NoRatingChangesError(url)
         else:
-            if printer.PRINT is not None: sleep(0.5)
+            sleep(0.5)
             printer.PRINT("retrying")
-            if printer.PRINT is not None: sleep(0.5)
+            sleep(0.5)
